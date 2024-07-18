@@ -6,6 +6,14 @@ one's fitness.
 
 *Please note that all fitness estimates done here are calculations and by no means 100% accurate nor as accurate as lab tests.*
 
+## Modules used
+
+1. math
+2. pint
+
+You must install pint, a module for operating on quantities across various units, for this project. You can do this by running:
+> `pip install pint` 
+
 ## Functions
 
 1. Calculate "MAF 180" HR (Max Aerobic HR)

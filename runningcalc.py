@@ -1,11 +1,13 @@
 '''
-Calculator to gage aerobic fitness level and guide training
-efforts for endurance sports, particularly mid-/long-distance
-running.
+Calculator to gage aerobic fitness level and guide training efforts for endurance
+sports, particularly mid-/long-distance running.
 '''
 # Packages
 import math
 from pint import UnitRegistry
+
+# Object for unit conversions from Pint library
+ureg = UnitRegistry()
 
 # Functions
 '''
@@ -32,10 +34,13 @@ def get_MAF_180(age):
     return hr
 
 '''
-Calculates VO2 Max
+Calculates VO2 Max from 
 '''
-def get_vo2(resting_hr):
-    return 0
+def get_vo2(race_dist, race_time):
+    velocity = 0 # calculate velo
+
+    vo2_max = (-4.60 + 0.182258 * velocity + 0.000104 * velocity**2) / (0.8 + 0.1894393 * math.e**(-0.012778 * race_time) + 0.2989558 * math.e^(-0.1932605 * race_time))
+    return vo2_max
 
 '''
 Estimates similar race efforts across various other distances. 
@@ -56,7 +61,9 @@ Calculates total time given a distance and pace.
 '''
 def get_time(dist, d_unit, pace, p_unit):
     # convert the pace units to be the same as the distance units, then multiply by the distance
-    return time_to_string(string_to_time(pace)/convert_units(1.0, p_unit, d_unit)*dist)
+    p_sec = string_to_time(pace) / convert_units(1.0, p_unit, d_unit)
+    total_time = p_sec * dist
+    return time_to_string(total_time)
 
 '''
 Calculates the time needed for each given split distance to run the given time
@@ -101,8 +108,6 @@ def time_to_string(time):
 Converts values from a given unit to the desired unit. 
 '''
 def convert_units(metric, from_unit, to_unit):
-    # from Pint library
-    ureg = UnitRegistry()
     # convert the value to the desired units
     original = metric * ureg(from_unit)
     converted = original.to(to_unit)
@@ -111,5 +116,23 @@ def convert_units(metric, from_unit, to_unit):
 # Main
 # TODO let user choose which function to use
 
-print(get_pace(42195, "meters", "2:19:59", "miles"))
-print(get_time(42195, "meters", "5:20.34", "miles"))
+print("Welcome to Python Running Calculator\n")
+
+while True:
+    print("1. Average pace \n2. Total activity time \n3. Time splits \n4. Max Aerobic Heartrate \n5. Vo2 Max \n6. Equivalent Race Efforts")
+    choice = input("Choose one of the above to calculate: ")
+
+    if choice == 1:
+        print("do something")
+    if choice == 2:
+        print("do something")
+    if choice == 3:
+        print("do something")
+    if choice == 4:
+        print("do something")
+    if choice == 5:
+        print("do something")
+    if choice == 6:
+        print("do something")
+    else:
+        print("Invalid input. Pick a number between 1 and 6.")
