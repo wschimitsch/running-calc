@@ -1,15 +1,13 @@
 # Running Calculator
 
-Fitness calculator for running, and similarly applicable to other endurance sports. With user input data, the program
-can calculate things like max aerobic heartrate and VO2 Max in order to guide training as well as establish a gage of
-one's fitness. 
-
-*Please note that all fitness estimates done here are calculations and by no means 100% accurate nor as accurate as lab tests.*
+Fitness calculator for running. With user input data, the program can calculate things like max aerobic heartrate and VO2 Max
+in order to help guide training as well as establish a gage of one's fitness. 
 
 ## Modules used
 
-1. math
-2. pint
+1. sys
+2. math
+3. pint
 
 You must install pint, a module for operating on quantities across various units, for this project. You can do this by running:
 > `pip install pint` 
